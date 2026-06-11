@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio — Giovana Kymberli | Design Gráfico</title>
+  <meta name="description" content="Portfólio de Giovana Kymberli - Designer Gráfica especializada em identidade visual, social media, design editorial e campanhas criativas. Transformando ideias em experiências visuais únicas.">
+  <meta name="keywords" content="design gráfico, identidade visual, social media, editorial, branding, portfólio, Giovana Kymberli">
+  <meta name="author" content="Giovana Kymberli">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Giovana Kymberli | Design Gráfico">
+  <meta property="og:description" content="Portfólio de Design Gráfico - Identidade visual, social media, editorial e campanhas criativas. Vamos criar algo incrível juntos!">
+  <meta property="og:image" content="https://seusite.com/kym/foto1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seusite.com">
+  <meta property="og:site_name" content="Portfólio Giovana Kymberli">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Giovana Kymberli | Design Gráfico">
+  <meta name="twitter:description" content="Portfólio de Design Gráfico - Identidade visual, social media, editorial e campanhas criativas.">
+  <meta name="twitter:image" content="https://seusite.com/kym/foto1.png">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="icon" href="kym/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="libs/turn.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name">Giovana <em>Kymberli</em></div>
+  <div class="loader-line-wrap"><div class="loader-line"></div></div>
+  <div class="loader-percent">Portfolio</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- NOISE -->
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-logo" href="#inicio">
+    <img src="kym/favicon.png" alt="Logo Kymberli">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#educacao">Educação</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <canvas id="webgl-canvas"></canvas>
+  <div class="hero-bg-text" aria-hidden="true">K</div>
+
+  <!-- Marquee -->
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-track" id="marquee-track">
+      <span class="hero-marquee-item">Design Gráfico</span>
+      <span class="hero-marquee-item">Identidade Visual</span>
+      <span class="hero-marquee-item">Social Media</span>
+      <span class="hero-marquee-item">Editorial</span>
+      <span class="hero-marquee-item">Branding</span>
+      <span class="hero-marquee-item">Motion Design</span>
+      <span class="hero-marquee-item">Tipografia</span>
+      <span class="hero-marquee-item">Design Gráfico</span>
+      <span class="hero-marquee-item">Identidade Visual</span>
+      <span class="hero-marquee-item">Social Media</span>
+      <span class="hero-marquee-item">Editorial</span>
+      <span class="hero-marquee-item">Branding</span>
+      <span class="hero-marquee-item">Motion Design</span>
+      <span class="hero-marquee-item">Tipografia</span>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-photo">
+      <div class="hero-photo-ring"></div>
+      <img src="kym/foto1.png" alt="Giovana Kymberli">
+    </div>
+    <div class="hero-text">
+      <div class="hero-tag">Design Gráfico</div>
+      <h1 class="hero-title">Olá, eu sou<br><em>Giovana Kymberli</em></h1>
+      <p class="hero-desc">Transformando ideias em identidades visuais, campanhas e experiências editoriais com propósito e elegância.</p>
+      <div class="hero-socials">
+        <a href="https://www.instagram.com/giovana_kymberli/" target="_blank">Instagram</a>
+        <a href="https://wa.me/5511910049675?text=Ol%C3%A1%2C%20Kymberli%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostei%20muito%20do%20seu%20trabalho.%20Tenho%20interesse%20em%20fazer%20um%20projeto%20com%20voc%C3%AA.%20Podemos%20conversar%3F" target="_blank">WhatsApp</a>
+        <a href="mailto:kymberli.vana@gmail.com">E-mail</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-number" aria-hidden="true">01</div>
+  <div class="sobre-left">
+    <div class="sobre-header">
+      <p class="section-label reveal">Sobre mim</p>
+      <h2 class="sobre-title reveal reveal-delay-1">Onde arte<br><em>encontra</em><br>estratégia</h2>
+    </div>
+    <div class="sobre-bio">
+      <p class="sobre-text reveal">Sou uma designer gráfica apaixonada por criar peças visuais que contam histórias e conectam marcas às pessoas. Com mais de 4 anos de experiência, transformo conceitos em identidades visuais únicas e memoráveis.</p>
+      <p class="sobre-text reveal reveal-delay-1">Acredito que o bom design vai além da estética — é sobre emoção, propósito e como a mensagem é percebida. Cada projeto é uma nova oportunidade de criar algo especial.</p>
+      <div class="reveal reveal-delay-2" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+        <a class="btn" href="#contato">Vamos conversar →</a>
+        <a class="btn btn-outline" href="#portfolio">Ver portfólio</a>
+      </div>
+    </div>
+  </div>
+  <div class="sobre-image-wrap reveal reveal-delay-3">
+    <div class="sobre-image-frame">
+      <img src="kym/logoestatico.png" alt="Logo Kymberli">
+    </div>
+  </div>
+</section>
+
+<!-- EDUCAÇÃO -->
+<section id="educacao">
+  <div class="section-header">
+    <h2 class="section-title reveal">Formação</h2>
+    <span class="section-count reveal"><i class="fas fa-graduation-cap" style="color: var(--lilac); margin-right: 0.5rem;"></i> 03 formações</span>
+  </div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <div class="edu-year">2025 — 2026</div>
+      <div>
+        <div class="edu-degree">Curso Técnico em Multimídia</div>
+        <div class="edu-institution">Senac São Paulo</div>
+      </div>
+      <div class="edu-badge">Técnico</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2025 — 2026</div>
+      <div>
+        <div class="edu-degree">Curso Profissionalizante em Motion Design</div>
+        <div class="edu-institution">Senac São Paulo</div>
+      </div>
+      <div class="edu-badge">Livre</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-year">2024 — 2025</div>
+      <div>
+        <div class="edu-degree">Curso Técnico em Design Gráfico</div>
+        <div class="edu-institution">ETEC</div>
+      </div>
+      <div class="edu-badge">Técnico</div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-header">
+    <h2 class="section-title reveal">Habilidades</h2>
+    <span class="section-count reveal" style="color:rgba(255,255,255,.3)"><i class="fas fa-laptop-code" style="color: var(--lilac); margin-right: 0.5rem;"></i> Ferramentas &amp; Softwares</span>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="fas fa-palette"></i> Design Gráfico</div>
+      <div class="skill-tags">
+        <span class="skill-tag"><i class="fas fa-camera"></i> Photoshop</span>
+        <span class="skill-tag"><i class="fas fa-pencil-alt"></i> Illustrator</span>
+        <span class="skill-tag"><i class="fas fa-book-open"></i> InDesign</span>
+        <span class="skill-tag"><i class="fas fa-drafting-compass"></i> Figma</span>
+        <span class="skill-tag"><i class="fas fa-vector-square"></i> CorelDRAW</span>
+        <span class="skill-tag"><i class="fas fa-chalkboard"></i> Canva</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="fas fa-trademark"></i> Identidade Visual</div>
+      <div class="skill-tags">
+        <span class="skill-tag"><i class="fas fa-tag"></i> Branding</span>
+        <span class="skill-tag"><i class="fas fa-draw-polygon"></i> Logo Design</span>
+        <span class="skill-tag"><i class="fas fa-palette"></i> Paleta de Cores</span>
+        <span class="skill-tag"><i class="fas fa-font"></i> Tipografia</span>
+        <span class="skill-tag"><i class="fas fa-th"></i> Grids</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title"><i class="fas fa-newspaper"></i> Editorial &amp; Social</div>
+      <div class="skill-tags">
+        <span class="skill-tag"><i class="fas fa-align-left"></i> Diagramação</span>
+        <span class="skill-tag"><i class="fab fa-instagram"></i> Social Media Design</span>
+        <span class="skill-tag"><i class="fas fa-film"></i> Pós-produção</span>
+        <span class="skill-tag"><i class="fas fa-magic"></i> Motion Design</span>
+        <span class="skill-tag"><i class="fas fa-video"></i> After Effects</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <h2 class="section-title reveal">Portfólio</h2>
+    <span class="section-count reveal"><i class="fas fa-briefcase" style="color: var(--lilac); margin-right: 0.5rem;"></i> Trabalhos recentes</span>
+  </div>
+  <div class="portfolio-grid">
+    <div class="project-card" onclick="openGallery('socialmedia')">
+      <img class="project-card-cover" src="socialmedia/capa.webp" alt="Mídias Sociais" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Social Media</div>
+        <div class="project-card-title">Trabalhos para Redes Sociais</div>
+      </div>
+      <div class="project-card-meta">
+        <button class="project-open-btn">Ver trabalhos →</button>
+      </div>
+    </div>
+    <div class="project-card" onclick="openRevista()">
+      <img class="project-card-cover" src="revista/capa.webp" alt="Revista" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Editorial</div>
+        <div class="project-card-title">Revista</div>
+      </div>
+      <div class="project-card-meta">
+        <button class="project-open-btn">Folhear →</button>
+      </div>
+    </div>
+    <div class="project-card" onclick="openSalonLine()">
+      <img class="project-card-cover" src="salonline/capa.webp" alt="Salon Line" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Campanha</div>
+        <div class="project-card-title">Salon Line</div>
+      </div>
+      <div class="project-card-meta">
+        <button class="project-open-btn">Ver campanha →</button>
+      </div>
+    </div>
+    <div class="project-card" onclick="openKimbre()">
+      <img class="project-card-cover" src="kimbre/capa.webp" alt="Kimbre" loading="lazy">
+      <div class="project-card-overlay">
+        <div class="project-card-tag">Identidade Visual</div>
+        <div class="project-card-title">Kimbre</div>
+      </div>
+      <div class="project-card-meta">
+        <button class="project-open-btn">Ver processo →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div>
+    <p class="section-label reveal" style="color:var(--lilac)">Contato</p>
+    <h2 class="contact-heading reveal reveal-delay-1">Vamos criar algo <em>incrível</em></h2>
+    <p class="contact-sub reveal reveal-delay-2">Aberto a projetos freelance, colaborações e oportunidades.</p>
+    <div class="contact-links reveal reveal-delay-3">
+      <a class="contact-link" href="mailto:kymberli.vana@gmail.com"><span class="contact-link-icon">✉</span> kymberli.vana@gmail.com</a>
+      <a class="contact-link" href="https://www.instagram.com/giovana_kymberli/" target="_blank"><span class="contact-link-icon">📷</span> @giovana_kymberli</a>
+      <a class="contact-link" href="https://wa.me/5511910049675?text=Ol%C3%A1%2C%20Kymberli%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostei%20muito%20do%20seu%20trabalho.%20Tenho%20interesse%20em%20fazer%20um%20projeto%20com%20voc%C3%AA.%20Podemos%20conversar%3F" target="_blank"><span class="contact-link-icon">💬</span> WhatsApp</a>
+    </div>
+  </div>
+  <form class="contact-form reveal reveal-delay-1" id="contactForm" onsubmit="submitForm(event)">
+    <div class="form-field">
+      <label class="form-label">Nome</label>
+      <input class="form-input" type="text" id="formNome" placeholder="Seu nome completo" required />
+    </div>
+    <div class="form-field">
+      <label class="form-label">Telefone / WhatsApp</label>
+      <input class="form-input" type="tel" id="formTelefone" placeholder="(11) 91234-5678" required />
+    </div>
+    <div class="form-field">
+      <label class="form-label">Mensagem</label>
+      <textarea class="form-input" id="formMensagem" placeholder="Conte sobre seu projeto…" required></textarea>
+    </div>
+    <button type="submit" class="btn" style="align-self:flex-start">Enviar mensagem →</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-name">Giovana Kymberli<span class="footer-dot">.</span></div>
+  <div class="footer-copy" id="footer-copy"></div>
+</footer>
+
+<!-- MODAIS -->
+<div class="modal-overlay" id="modal-gallery">
+  <button class="modal-close" onclick="closeModal('modal-gallery')">×</button>
+  <div class="modal-inner" id="gallery-inner">
+    <div class="gallery-modal-header">
+      <div class="gallery-modal-tag" id="gallery-tag"></div>
+      <div class="gallery-modal-title" id="gallery-title"></div>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-revista">
+  <button class="modal-close" onclick="closeModal('modal-revista')">×</button>
+  <div class="modal-inner">
+    <div class="revista-header">
+      <div class="gallery-modal-tag">Editorial</div>
+      <div class="gallery-modal-title">Revista</div>
+    </div>
+    <div class="flipbook-wrapper">
+      <button class="flip-btn" id="btn-prev" onclick="flipPrev()">‹</button>
+      <div><div id="flipbook"></div><div class="flip-counter">Página <span id="flip-current">1</span> de <span id="flip-total">16</span></div></div>
+      <button class="flip-btn" id="btn-next" onclick="flipNext()">›</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-kimbre">
+  <button class="modal-close" onclick="closeModal('modal-kimbre')">×</button>
+  <div class="modal-inner">
+    <div class="gallery-modal-header"><div class="gallery-modal-tag">Identidade Visual</div><div class="gallery-modal-title">Kimbre</div></div>
+    <div class="kimbre-steps">
+      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/processo_criativo.webp" alt="Processo Criativo"></div><div class="kimbre-step-text"><div class="kimbre-step-num">01</div><div class="kimbre-step-label">Briefing &amp; Pesquisa</div><div class="kimbre-step-title">Processo Criativo</div><p class="kimbre-step-desc">Início com imersão na marca, pesquisa de referências e moodboard para definir a personalidade visual e o posicionamento da Kimbre.</p></div></div>
+      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/processo_identificacao.webp" alt="Identificação"></div><div class="kimbre-step-text"><div class="kimbre-step-num">02</div><div class="kimbre-step-label">Conceito &amp; Esboços</div><div class="kimbre-step-title">Identificação da Marca</div><p class="kimbre-step-desc">Exploração de formas, tipografias e conceitos que traduzem os valores da marca em elementos gráficos únicos e memoráveis.</p></div></div>
+      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/finalizacao.webp" alt="Finalização"></div><div class="kimbre-step-text"><div class="kimbre-step-num">03</div><div class="kimbre-step-label">Refinamento</div><div class="kimbre-step-title">Finalização</div><p class="kimbre-step-desc">Ajustes finos, definição da paleta de cores, tipografia e todas as variações do logo para diferentes aplicações.</p></div></div>
+      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/logo_final.webp" alt="Logo Final"></div><div class="kimbre-step-text"><div class="kimbre-step-num">04</div><div class="kimbre-step-label">Resultado</div><div class="kimbre-step-title">Logo Final</div><p class="kimbre-step-desc">O resultado é uma identidade visual coesa, versátil e com forte personalidade — pronta para comunicar a essência da Kimbre em qualquer contexto.</p></div></div>
+      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/aplicacoes.webp" alt="Aplicações"></div><div class="kimbre-step-text"><div class="kimbre-step-num">05</div><div class="kimbre-step-label">Brand Guidelines</div><div class="kimbre-step-title">Aplicações</div><p class="kimbre-step-desc">Demonstração da identidade em diferentes suportes: digital, impresso, embalagens e materiais institucionais.</p></div></div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-salonline">
+  <button class="modal-close" onclick="closeModal('modal-salonline')">×</button>
+  <div class="modal-inner"><iframe class="canva-embed" src="https://www.canva.com/design/DAGPIyXe3bE/jrOx6Yg2Bwv2GWBsX4WxrQ/view?embed" allowfullscreen></iframe></div>
+</div>
+<div id="lightbox"><button id="lightbox-close" onclick="closeLightbox()">×</button><img id="lightbox-img" src="" alt=""></div>
+
+<!-- Badge disponível -->
+<a class="available-badge" href="#contato" aria-label="Disponível para projetos">
+  <span class="available-badge-text">Disponível<br>para<br>projetos</span>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
