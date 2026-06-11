@@ -77,6 +77,22 @@ document.getElementById('lightbox').addEventListener('click', e => { if (e.targe
 
 const TOTAL_PAGES = 16;
 let flipbookReady = false;
+let revistaPreloaded = false;
+let revistaLoadedCount = 0;
+
+/* PRÉ-CARREGAMENTO DA REVISTA em background */
+function preloadRevista() {
+  if (revistaPreloaded) return;
+  revistaPreloaded = true;
+  for (let i = 1; i <= TOTAL_PAGES; i++) {
+    const img = new Image();
+    img.src = `revista/${i}.webp`;
+    img.onload = () => { revistaLoadedCount++; };
+  }
+}
+
+/* Inicia preload assim que a página termina de carregar */
+window.addEventListener('load', preloadRevista);
 
 function calcFlipbookSize() {
   const maxW = Math.min(window.innerWidth * 0.85, 900);
@@ -89,7 +105,23 @@ function calcFlipbookSize() {
 
 function openRevista() {
   openModal('modal-revista');
-  setTimeout(initFlipbook, 300);
+  preloadRevista(); /* garante preload mesmo se window.load já passou */
+
+  /* Mostra loading e espera pelo menos as primeiras imagens */
+  const $fb = $('#flipbook');
+  $fb.html('<div style="display:flex;align-items:center;justify-content:center;height:300px;color:rgba(255,255,255,.4);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;flex-direction:column;gap:1rem"><div id="revista-progress" style="font-size:.7rem;color:var(--lilac)">Carregando páginas…</div></div>');
+
+  const tryInit = () => {
+    /* aguarda pelo menos 4 imagens carregadas antes de montar o flipbook */
+    if (revistaLoadedCount >= 4 || revistaLoadedCount >= TOTAL_PAGES) {
+      initFlipbook();
+    } else {
+      document.getElementById('revista-progress') &&
+        (document.getElementById('revista-progress').textContent = `Carregando… ${revistaLoadedCount}/${TOTAL_PAGES}`);
+      setTimeout(tryInit, 200);
+    }
+  };
+  setTimeout(tryInit, 300);
 }
 
 function initFlipbook() {
@@ -99,7 +131,7 @@ function initFlipbook() {
   const { w, h } = calcFlipbookSize();
   const isMobile = window.innerWidth < 600;
   for (let i = 1; i <= TOTAL_PAGES; i++) {
-    $fb.append(`<div class="page"><img src="revista/${i}.webp" alt="Página ${i}" loading="lazy"></div>`);
+    $fb.append(`<div class="page"><img src="revista/${i}.webp" alt="Página ${i}"></div>`);
   }
   $fb.turn({
     width: isMobile ? w : w * 2,
