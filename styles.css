@@ -1021,10 +1021,46 @@ nav.nav-hidden {
 }
 
 #lightbox img {
-  max-width: 92vw;
-  max-height: 92vh;
+  max-width: 80vw;
+  max-height: 85vh;
   object-fit: contain;
   border-radius: 2px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  z-index: 2001;
+}
+
+.lightbox-nav:hover {
+  background: var(--lilac);
+  border-color: var(--lilac);
+  color: var(--black);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.lightbox-nav-prev {
+  left: 2rem;
+}
+
+.lightbox-nav-next {
+  right: 2rem;
 }
 
 #lightbox-close {
@@ -1033,13 +1069,16 @@ nav.nav-hidden {
   right: 2rem;
   background: none;
   border: none;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, .6);
   font-size: 2.5rem;
-  transition: color .2s;
+  transition: color .2s, transform .2s;
+  cursor: pointer;
+  z-index: 2001;
 }
 
 #lightbox-close:hover {
   color: var(--lilac);
+  transform: rotate(90deg);
 }
 
 /* CONTATO */
@@ -1257,4 +1296,26 @@ footer {
   .hero-marquee { display: none; }
   .available-badge { width: 64px; height: 64px; bottom: 1.5rem; right: 1.5rem; }
   .available-badge-text { font-size: .42rem; }
+  
+  /* Lightbox mobile adjustments */
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+  .lightbox-nav-prev {
+    left: 0.5rem;
+  }
+  .lightbox-nav-next {
+    right: 0.5rem;
+  }
+  #lightbox img {
+    max-width: 85vw;
+    max-height: 70vh;
+  }
+  #lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+  }
 }
