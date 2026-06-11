@@ -339,7 +339,14 @@
   <button class="modal-close" onclick="closeModal('modal-salonline')">×</button>
   <div class="modal-inner"><iframe class="canva-embed" src="https://www.canva.com/design/DAGPIyXe3bE/jrOx6Yg2Bwv2GWBsX4WxrQ/view?embed" allowfullscreen></iframe></div>
 </div>
-<div id="lightbox"><button id="lightbox-close" onclick="closeLightbox()">×</button><img id="lightbox-img" src="" alt=""></div>
+
+<!-- LIGHTBOX COM BOTÕES DE NAVEGAÇÃO -->
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav lightbox-nav-prev" id="lightbox-prev" onclick="prevLightboxImage()">‹</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-nav-next" id="lightbox-next" onclick="nextLightboxImage()">›</button>
+</div>
 
 <!-- Badge disponível -->
 <a class="available-badge" href="#contato" aria-label="Disponível para projetos">
