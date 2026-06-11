@@ -54,26 +54,128 @@ const galleries = {
   }
 };
 
-function openGallery(key) {
+// --- LIGHTBOX NAVIGATION STATE ---
+let currentGalleryImages = [];   // Array de objetos { src }
+let currentImageIndex = 0;
+let currentGalleryKey = null;    // 'socialmedia', etc
+let touchStartX = 0;
+let touchEndX = 0;
+
+function updateLightboxImage() {
+  if (!currentGalleryImages.length) return;
+  const imgObj = currentGalleryImages[currentImageIndex];
+  if (!imgObj) return;
+  const imgSrc = imgObj.src;
+  document.getElementById('lightbox-img').src = imgSrc;
+}
+
+function nextLightboxImage() {
+  if (!currentGalleryImages.length) return;
+  currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+  updateLightboxImage();
+}
+
+function prevLightboxImage() {
+  if (!currentGalleryImages.length) return;
+  currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+  updateLightboxImage();
+}
+
+function openGallery(key, startIndex = 0) {
   const data = galleries[key];
+  if (!data) return;
+  currentGalleryKey = key;
+  currentGalleryImages = data.images.slice(); // copy
+  currentImageIndex = Math.min(startIndex, currentGalleryImages.length - 1);
+  if (currentImageIndex < 0) currentImageIndex = 0;
+  
   document.getElementById('gallery-tag').textContent = data.tag;
   document.getElementById('gallery-title').textContent = data.title;
   const grid = document.getElementById('gallery-grid');
   grid.innerHTML = '';
-  data.images.forEach(img => {
+  data.images.forEach((img, idx) => {
     const el = document.createElement('img');
     el.src = img.src;
     if (img.wide) el.classList.add('wide');
-    el.onclick = () => openLightbox(img.src);
+    el.onclick = () => openLightbox(key, idx);
     grid.appendChild(el);
   });
   openModal('modal-gallery');
 }
 
 function openSalonLine() { openModal('modal-salonline'); }
-function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('open'); }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); document.getElementById('lightbox-img').src = ''; }
-document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
+
+function openLightbox(galleryKey, imgIndex = 0) {
+  const data = galleries[galleryKey];
+  if (!data) return;
+  currentGalleryKey = galleryKey;
+  currentGalleryImages = data.images.slice();
+  currentImageIndex = Math.min(imgIndex, currentGalleryImages.length - 1);
+  if (currentImageIndex < 0) currentImageIndex = 0;
+  updateLightboxImage();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() { 
+  document.getElementById('lightbox').classList.remove('open'); 
+  document.getElementById('lightbox-img').src = ''; 
+  document.body.style.overflow = '';
+  currentGalleryImages = [];
+  currentImageIndex = 0;
+  currentGalleryKey = null;
+}
+
+// Touch/swipe support for lightbox
+function initLightboxSwipe() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        prevLightboxImage();
+      } else {
+        nextLightboxImage();
+      }
+    }
+  }, { passive: true });
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+  const lightboxOpen = document.getElementById('lightbox').classList.contains('open');
+  if (!lightboxOpen) return;
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    prevLightboxImage();
+  } else if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    nextLightboxImage();
+  } else if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});
+
+// Lightbox click outside
+document.getElementById('lightbox').addEventListener('click', e => { 
+  if (e.target === document.getElementById('lightbox')) closeLightbox(); 
+});
+
+// Buttons listeners
+document.getElementById('lightbox-prev')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  prevLightboxImage();
+});
+document.getElementById('lightbox-next')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nextLightboxImage();
+});
+
+initLightboxSwipe();
 
 const TOTAL_PAGES = 16;
 let flipbookReady = false;
@@ -184,7 +286,11 @@ function enableKimbreImageClick() {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', (e) => {
       e.stopPropagation();
-      openLightbox(img.src);
+      // For Kimbre, we could open a separate lightbox but not required by spec.
+      // We'll just open a simple lightbox without gallery for these images.
+      // But to keep consistency, we'll open a single image lightbox (no prev/next for kimbre standalone)
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
     });
   });
 }
