@@ -267,49 +267,7 @@ enableKimbreImageClick();
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* CUSTOM CURSOR */
-(function initCursor() {
-  if (window.innerWidth <= 768) return;
 
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring) return;
-
-  const setDotX  = gsap.quickSetter(dot,  'x', 'px');
-  const setDotY  = gsap.quickSetter(dot,  'y', 'px');
-
-  let curX = 0, curY = 0, ringX = 0, ringY = 0;
-
-  window.addEventListener('mousemove', e => {
-    curX = e.clientX;
-    curY = e.clientY;
-    setDotX(curX);
-    setDotY(curY);
-  }, { passive: true });
-
-  gsap.ticker.add(() => {
-    const dt = 1 - Math.pow(0.84, gsap.ticker.deltaRatio());
-    ringX += (curX - ringX) * dt;
-    ringY += (curY - ringY) * dt;
-    gsap.set(ring, { x: ringX, y: ringY });
-  });
-
-  const expandTargets = 'a, button, .project-card, .skill-tag, .flip-btn, .available-badge, .contact-link, .form-input, .modal-close, .nav-logo';
-
-  document.querySelectorAll(expandTargets).forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      gsap.to(ring, { width: 56, height: 56, borderColor: 'rgba(200,162,255,0.9)', duration: 0.35, ease: 'power2.out' });
-      gsap.to(dot,  { scale: 0.4, duration: 0.35, ease: 'power2.out' });
-    });
-    el.addEventListener('mouseleave', () => {
-      gsap.to(ring, { width: 38, height: 38, borderColor: 'rgba(200,162,255,0.5)', duration: 0.35, ease: 'power2.out' });
-      gsap.to(dot,  { scale: 1, duration: 0.35, ease: 'power2.out' });
-    });
-  });
-
-  document.addEventListener('mousedown',  () => gsap.to(ring, { scale: 0.85, duration: 0.2 }));
-  document.addEventListener('mouseup',    () => gsap.to(ring, { scale: 1.00, duration: 0.2 }));
-})();
 
 /* NAV HIDE ON SCROLL DOWN */
 (function initNav() {
@@ -643,4 +601,3 @@ if (window.innerWidth <= 768) {
     if (st.vars && st.vars.scrub) st.kill();
   });
 }
-
