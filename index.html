@@ -36,9 +36,8 @@
   <link rel="preload" as="image" href="revista/capa.webp">
   <link rel="preload" as="image" href="salonline/capa.webp">
   <link rel="preload" as="image" href="kimbre/capa.webp">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="libs/turn.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
@@ -69,8 +68,7 @@
 
 <!-- HERO -->
 <section id="inicio">
-  <canvas id="webgl-canvas"></canvas>
-  <div class="hero-bg-text" aria-hidden="true">K</div>
+  <div class="hero-bg-text">K</div>
 
   <!-- Marquee -->
   <div class="hero-marquee" aria-hidden="true">
@@ -115,7 +113,7 @@
 </section>
 
 <!-- SOBRE -->
-<section id="sobre">
+<section id="sobre" class="has-bg-letter">
   <div class="sobre-number" aria-hidden="true">01</div>
   <div class="sobre-left">
     <div class="sobre-header">
@@ -139,7 +137,7 @@
 </section>
 
 <!-- EDUCAÇÃO -->
-<section id="educacao">
+<section id="educacao" class="has-bg-letter">
   <div class="section-header">
     <h2 class="section-title reveal">Formação</h2>
     <span class="section-count reveal"><i class="fas fa-graduation-cap" style="color: var(--lilac); margin-right: 0.5rem;"></i> 03 formações</span>
@@ -173,7 +171,7 @@
 </section>
 
 <!-- HABILIDADES -->
-<section id="habilidades">
+<section id="habilidades" class="has-bg-letter">
   <div class="section-header">
     <h2 class="section-title reveal">Habilidades</h2>
     <span class="section-count reveal" style="color:rgba(255,255,255,.3)"><i class="fas fa-laptop-code" style="color: var(--lilac); margin-right: 0.5rem;"></i> Ferramentas &amp; Softwares</span>
@@ -213,58 +211,183 @@
   </div>
 </section>
 
-<!-- PORTFÓLIO -->
+<!-- PORTFÓLIO — cards pequenos -->
 <section id="portfolio">
   <div class="section-header">
     <h2 class="section-title reveal">Portfólio</h2>
     <span class="section-count reveal"><i class="fas fa-briefcase" style="color: var(--lilac); margin-right: 0.5rem;"></i> Trabalhos recentes</span>
   </div>
-  <div class="portfolio-grid">
-    <div class="project-card" onclick="openGallery('socialmedia')">
-      <img class="project-card-cover" src="socialmedia/capa.webp" alt="Mídias Sociais" loading="lazy">
-      <div class="project-card-overlay">
-        <div class="project-card-tag">Social Media</div>
-        <div class="project-card-title">Trabalhos para Redes Sociais</div>
+  <div class="portfolio-cards">
+    <div class="pcard" onclick="scrollToGallery('galeria-socialmedia')">
+      <div class="pcard-img-wrap">
+        <img src="socialmedia/capa.webp" alt="Mídias Sociais" loading="lazy">
       </div>
-      <div class="project-card-meta">
-        <button class="project-open-btn">Ver trabalhos →</button>
-      </div>
-    </div>
-    <div class="project-card" onclick="openRevista()">
-      <img class="project-card-cover" src="revista/capa.webp" alt="Revista" loading="lazy">
-      <div class="project-card-overlay">
-        <div class="project-card-tag">Editorial</div>
-        <div class="project-card-title">Revista</div>
-      </div>
-      <div class="project-card-meta">
-        <button class="project-open-btn">Folhear →</button>
+      <div class="pcard-info">
+        <span class="pcard-tag">Social Media</span>
+        <span class="pcard-title">Redes Sociais</span>
       </div>
     </div>
-    <div class="project-card" onclick="openSalonLine()">
-      <img class="project-card-cover" src="salonline/capa.webp" alt="Salon Line" loading="lazy">
-      <div class="project-card-overlay">
-        <div class="project-card-tag">Campanha</div>
-        <div class="project-card-title">Salon Line</div>
+    <div class="pcard" onclick="scrollToGallery('galeria-revista')">
+      <div class="pcard-img-wrap">
+        <img src="revista/capa.webp" alt="Revista" loading="lazy">
       </div>
-      <div class="project-card-meta">
-        <button class="project-open-btn">Ver campanha →</button>
+      <div class="pcard-info">
+        <span class="pcard-tag">Editorial</span>
+        <span class="pcard-title">Revista</span>
       </div>
     </div>
-    <div class="project-card" onclick="openKimbre()">
-      <img class="project-card-cover" src="kimbre/capa.webp" alt="Kimbre" loading="lazy">
-      <div class="project-card-overlay">
-        <div class="project-card-tag">Identidade Visual</div>
-        <div class="project-card-title">Kimbre</div>
+    <div class="pcard" onclick="scrollToGallery('galeria-salonline')">
+      <div class="pcard-img-wrap">
+        <img src="salonline/capa.webp" alt="Salon Line" loading="lazy">
       </div>
-      <div class="project-card-meta">
-        <button class="project-open-btn">Ver processo →</button>
+      <div class="pcard-info">
+        <span class="pcard-tag">Campanha</span>
+        <span class="pcard-title">Salon Line</span>
+      </div>
+    </div>
+    <div class="pcard" onclick="scrollToGallery('galeria-kimbre')">
+      <div class="pcard-img-wrap">
+        <img src="kimbre/capa.webp" alt="Kimbre" loading="lazy">
+      </div>
+      <div class="pcard-info">
+        <span class="pcard-tag">Identidade Visual</span>
+        <span class="pcard-title">Kimbre</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GALERIAS INLINE                            -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- GALERIA: SOCIAL MEDIA -->
+<section class="galeria-section" id="galeria-socialmedia">
+  <div class="galeria-header">
+    <div class="galeria-back" onclick="scrollToPortfolio()">← Portfólio</div>
+    <div>
+      <div class="galeria-tag">Social Media</div>
+      <h2 class="galeria-titulo">Trabalhos para Redes Sociais</h2>
+    </div>
+  </div>
+  <div class="galeria-organica" id="grid-socialmedia">
+    <img src="socialmedia/poster.webp" alt="Poster" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/1.webp" alt="Social 1" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/2.webp" alt="Social 2" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/3.webp" alt="Social 3" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/4.webp" alt="Social 4" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/5.webp" alt="Social 5" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/6.webp" alt="Social 6" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/petshop.webp" alt="Petshop" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/viagem.webp" alt="Viagem" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/modusad.webp" alt="Modus Ad" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+    <img src="socialmedia/modus.webp" alt="Modus" loading="lazy" onclick="openLightboxInline(this, 'grid-socialmedia')">
+  </div>
+</section>
+
+<!-- GALERIA: REVISTA (sem capa duplicada) -->
+<section class="galeria-section" id="galeria-revista">
+  <div class="galeria-header">
+    <div class="galeria-back" onclick="scrollToPortfolio()">← Portfólio</div>
+    <div>
+      <div class="galeria-tag">Editorial</div>
+      <h2 class="galeria-titulo">Revista — Páginas internas</h2>
+    </div>
+  </div>
+  <div class="revista-paginas" id="grid-revista">
+    <img src="revista/1.webp" alt="Página 1" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/2.webp" alt="Página 2" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/3.webp" alt="Página 3" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/4.webp" alt="Página 4" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/5.webp" alt="Página 5" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/6.webp" alt="Página 6" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/7.webp" alt="Página 7" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/8.webp" alt="Página 8" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/9.webp" alt="Página 9" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/10.webp" alt="Página 10" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/11.webp" alt="Página 11" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/12.webp" alt="Página 12" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/13.webp" alt="Página 13" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/14.webp" alt="Página 14" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/15.webp" alt="Página 15" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+    <img src="revista/16.webp" alt="Página 16" loading="lazy" onclick="openLightboxInline(this, 'grid-revista')">
+  </div>
+</section>
+
+<!-- GALERIA: SALON LINE -->
+<section class="galeria-section" id="galeria-salonline">
+  <div class="galeria-header">
+    <div class="galeria-back" onclick="scrollToPortfolio()">← Portfólio</div>
+    <div>
+      <div class="galeria-tag">Campanha</div>
+      <h2 class="galeria-titulo">Salon Line</h2>
+    </div>
+  </div>
+  <div class="galeria-canva-wrap">
+    <iframe class="canva-embed" src="https://www.canva.com/design/DAGPIyXe3bE/jrOx6Yg2Bwv2GWBsX4WxrQ/view?embed" allowfullscreen title="Salon Line Campanha"></iframe>
+  </div>
+</section>
+
+<!-- GALERIA: KIMBRE -->
+<section class="galeria-section" id="galeria-kimbre">
+  <div class="galeria-header">
+    <div class="galeria-back" onclick="scrollToPortfolio()">← Portfólio</div>
+    <div>
+      <div class="galeria-tag">Identidade Visual</div>
+      <h2 class="galeria-titulo">Kimbre</h2>
+    </div>
+  </div>
+  <div class="kimbre-steps">
+    <div class="kimbre-step">
+      <div class="kimbre-step-img"><img src="kimbre/processo_criativo.webp" alt="Processo Criativo" onclick="openLightboxInline(this, null)"></div>
+      <div class="kimbre-step-text">
+        <div class="kimbre-step-num">01</div>
+        <div class="kimbre-step-label">Briefing &amp; Pesquisa</div>
+        <div class="kimbre-step-title">Processo Criativo</div>
+        <p class="kimbre-step-desc">Início com imersão na marca, pesquisa de referências e moodboard para definir a personalidade visual e o posicionamento da Kimbre.</p>
+      </div>
+    </div>
+    <div class="kimbre-step">
+      <div class="kimbre-step-img"><img src="kimbre/processo_identificacao.webp" alt="Identificação" onclick="openLightboxInline(this, null)"></div>
+      <div class="kimbre-step-text">
+        <div class="kimbre-step-num">02</div>
+        <div class="kimbre-step-label">Conceito &amp; Esboços</div>
+        <div class="kimbre-step-title">Identificação da Marca</div>
+        <p class="kimbre-step-desc">Exploração de formas, tipografias e conceitos que traduzem os valores da marca em elementos gráficos únicos e memoráveis.</p>
+      </div>
+    </div>
+    <div class="kimbre-step">
+      <div class="kimbre-step-img"><img src="kimbre/finalizacao.webp" alt="Finalização" onclick="openLightboxInline(this, null)"></div>
+      <div class="kimbre-step-text">
+        <div class="kimbre-step-num">03</div>
+        <div class="kimbre-step-label">Refinamento</div>
+        <div class="kimbre-step-title">Finalização</div>
+        <p class="kimbre-step-desc">Ajustes finos, definição da paleta de cores, tipografia e todas as variações do logo para diferentes aplicações.</p>
+      </div>
+    </div>
+    <div class="kimbre-step">
+      <div class="kimbre-step-img"><img src="kimbre/logo_final.webp" alt="Logo Final" onclick="openLightboxInline(this, null)"></div>
+      <div class="kimbre-step-text">
+        <div class="kimbre-step-num">04</div>
+        <div class="kimbre-step-label">Resultado</div>
+        <div class="kimbre-step-title">Logo Final</div>
+        <p class="kimbre-step-desc">O resultado é uma identidade visual coesa, versátil e com forte personalidade — pronta para comunicar a essência da Kimbre em qualquer contexto.</p>
+      </div>
+    </div>
+    <div class="kimbre-step">
+      <div class="kimbre-step-img"><img src="kimbre/aplicacoes.webp" alt="Aplicações" onclick="openLightboxInline(this, null)"></div>
+      <div class="kimbre-step-text">
+        <div class="kimbre-step-num">05</div>
+        <div class="kimbre-step-label">Brand Guidelines</div>
+        <div class="kimbre-step-title">Aplicações</div>
+        <p class="kimbre-step-desc">Demonstração da identidade em diferentes suportes: digital, impresso, embalagens e materiais institucionais.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTATO -->
-<section id="contato">
+<section id="contato" class="has-bg-letter">
   <div>
     <p class="section-label reveal" style="color:var(--lilac)">Contato</p>
     <h2 class="contact-heading reveal reveal-delay-1">Vamos criar algo <em>incrível</em></h2>
@@ -297,50 +420,7 @@
   <div class="footer-copy" id="footer-copy"></div>
 </footer>
 
-<!-- MODAIS -->
-<div class="modal-overlay" id="modal-gallery">
-  <button class="modal-close" onclick="closeModal('modal-gallery')">×</button>
-  <div class="modal-inner" id="gallery-inner">
-    <div class="gallery-modal-header">
-      <div class="gallery-modal-tag" id="gallery-tag"></div>
-      <div class="gallery-modal-title" id="gallery-title"></div>
-    </div>
-    <div class="gallery-grid" id="gallery-grid"></div>
-  </div>
-</div>
-<div class="modal-overlay" id="modal-revista">
-  <button class="modal-close" onclick="closeModal('modal-revista')">×</button>
-  <div class="modal-inner">
-    <div class="revista-header">
-      <div class="gallery-modal-tag">Editorial</div>
-      <div class="gallery-modal-title">Revista</div>
-    </div>
-    <div class="flipbook-wrapper">
-      <button class="flip-btn" id="btn-prev" onclick="flipPrev()">‹</button>
-      <div><div id="flipbook"></div><div class="flip-counter">Página <span id="flip-current">1</span> de <span id="flip-total">16</span></div></div>
-      <button class="flip-btn" id="btn-next" onclick="flipNext()">›</button>
-    </div>
-  </div>
-</div>
-<div class="modal-overlay" id="modal-kimbre">
-  <button class="modal-close" onclick="closeModal('modal-kimbre')">×</button>
-  <div class="modal-inner">
-    <div class="gallery-modal-header"><div class="gallery-modal-tag">Identidade Visual</div><div class="gallery-modal-title">Kimbre</div></div>
-    <div class="kimbre-steps">
-      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/processo_criativo.webp" alt="Processo Criativo"></div><div class="kimbre-step-text"><div class="kimbre-step-num">01</div><div class="kimbre-step-label">Briefing &amp; Pesquisa</div><div class="kimbre-step-title">Processo Criativo</div><p class="kimbre-step-desc">Início com imersão na marca, pesquisa de referências e moodboard para definir a personalidade visual e o posicionamento da Kimbre.</p></div></div>
-      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/processo_identificacao.webp" alt="Identificação"></div><div class="kimbre-step-text"><div class="kimbre-step-num">02</div><div class="kimbre-step-label">Conceito &amp; Esboços</div><div class="kimbre-step-title">Identificação da Marca</div><p class="kimbre-step-desc">Exploração de formas, tipografias e conceitos que traduzem os valores da marca em elementos gráficos únicos e memoráveis.</p></div></div>
-      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/finalizacao.webp" alt="Finalização"></div><div class="kimbre-step-text"><div class="kimbre-step-num">03</div><div class="kimbre-step-label">Refinamento</div><div class="kimbre-step-title">Finalização</div><p class="kimbre-step-desc">Ajustes finos, definição da paleta de cores, tipografia e todas as variações do logo para diferentes aplicações.</p></div></div>
-      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/logo_final.webp" alt="Logo Final"></div><div class="kimbre-step-text"><div class="kimbre-step-num">04</div><div class="kimbre-step-label">Resultado</div><div class="kimbre-step-title">Logo Final</div><p class="kimbre-step-desc">O resultado é uma identidade visual coesa, versátil e com forte personalidade — pronta para comunicar a essência da Kimbre em qualquer contexto.</p></div></div>
-      <div class="kimbre-step"><div class="kimbre-step-img"><img src="kimbre/aplicacoes.webp" alt="Aplicações"></div><div class="kimbre-step-text"><div class="kimbre-step-num">05</div><div class="kimbre-step-label">Brand Guidelines</div><div class="kimbre-step-title">Aplicações</div><p class="kimbre-step-desc">Demonstração da identidade em diferentes suportes: digital, impresso, embalagens e materiais institucionais.</p></div></div>
-    </div>
-  </div>
-</div>
-<div class="modal-overlay" id="modal-salonline">
-  <button class="modal-close" onclick="closeModal('modal-salonline')">×</button>
-  <div class="modal-inner"><iframe class="canva-embed" src="https://www.canva.com/design/DAGPIyXe3bE/jrOx6Yg2Bwv2GWBsX4WxrQ/view?embed" allowfullscreen></iframe></div>
-</div>
-
-<!-- LIGHTBOX COM BOTÕES DE NAVEGAÇÃO -->
+<!-- LIGHTBOX -->
 <div id="lightbox">
   <button id="lightbox-close" onclick="closeLightbox()">×</button>
   <button class="lightbox-nav lightbox-nav-prev" id="lightbox-prev" onclick="prevLightboxImage()">‹</button>
