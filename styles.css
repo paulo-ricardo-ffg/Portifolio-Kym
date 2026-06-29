@@ -6,6 +6,7 @@
   --gray-light: #F5F5F5;
   --gray-mid: #888888;
   --serif: 'Playfair Display', Georgia, serif;
+  --cormorant: 'Cormorant Garamond', Georgia, serif;
   --sans: 'DM Sans', Helvetica, sans-serif;
   --cinzel: 'Cinzel Decorative', cursive;
 }
@@ -153,7 +154,6 @@ nav.nav-hidden {
   overflow: hidden;
 }
 
-/* ========== COMPONENTE BACKGROUND LETTER (CORRIGIDO) ========== */
 .bg-letter,
 .hero-bg-text {
   position: absolute;
@@ -163,9 +163,7 @@ nav.nav-hidden {
   font-family: var(--cinzel);
   font-size: clamp(6rem, 20vw, 22rem);
   font-weight: 900;
-  /* Opacidade aumentada de 0.06 para 0.12 – fica visível mas elegante */
   color: rgba(200, 162, 255, 0.06);
-  /* Sombra suave para dar contraste mesmo com opacidade baixa */
   text-shadow: 0 0 15px rgba(200, 162, 255, 0.2);
   white-space: nowrap;
   pointer-events: none;
@@ -173,28 +171,20 @@ nav.nav-hidden {
   letter-spacing: -.04em;
   z-index: 1;
   display: block;
-  /* Animação sem alterar opacidade (apenas escala) */
   animation: floatLetter 12s ease-in-out infinite;
   will-change: transform;
 }
 
-/* Animação suave sem opacidade variável */
 @keyframes floatLetter {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.02);
-  }
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.02); }
 }
 
-/* Classe utilitária para containers da letra de fundo */
 .has-bg-letter {
   position: relative;
   overflow: hidden;
 }
 
-/* Caso queira desabilitar a animação em algum local específico */
 .no-animation .bg-letter,
 .no-animation.hero-bg-text {
   animation: none;
@@ -222,6 +212,7 @@ nav.nav-hidden {
   opacity: 0;
 }
 
+/* "Giovana Kymberli" no hero mantém Playfair Display */
 .hero-title {
   font-family: var(--serif);
   font-size: clamp(3rem, 8vw, 7rem);
@@ -378,7 +369,7 @@ nav.nav-hidden {
 #sobre {
   background: var(--white);
   color: var(--black);
-  padding: 6rem 4rem;  /* antes 10rem 4rem */
+  padding: 6rem 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
@@ -391,7 +382,7 @@ nav.nav-hidden {
   position: absolute;
   top: 4rem;
   right: 4rem;
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: 8rem;
   font-weight: 900;
   color: rgba(0, 0, 0, .04);
@@ -408,15 +399,20 @@ nav.nav-hidden {
   margin-bottom: 2rem;
 }
 
+/* Título "Onde arte encontra estratégia" — tudo Cormorant, sem itálico no em */
 .sobre-title {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.05;
   letter-spacing: -.02em;
 }
 
-.sobre-title em { font-style: italic; }
+.sobre-title em {
+  font-style: normal;
+  font-family: var(--cormorant);
+  font-weight: 700;
+}
 
 .sobre-text {
   color: rgba(0, 0, 0, .65);
@@ -494,16 +490,17 @@ nav.nav-hidden {
   padding-bottom: 2rem;
 }
 
+/* Todos os section-title usam Cormorant Garamond */
 .section-title {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -.03em;
 }
 
 .section-count {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: .85rem;
   color: rgba(255, 255, 255, .3);
   letter-spacing: .1em;
@@ -512,7 +509,7 @@ nav.nav-hidden {
 /* EDUCAÇÃO */
 #educacao {
   background: var(--black);
-  padding: 4rem 4rem;  /* antes 3rem 4rem */
+  padding: 4rem 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -536,7 +533,7 @@ nav.nav-hidden {
 }
 
 .edu-year {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: .85rem;
   color: var(--lilac);
   font-style: italic;
@@ -544,7 +541,7 @@ nav.nav-hidden {
 }
 
 .edu-degree {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: .4rem;
@@ -571,7 +568,7 @@ nav.nav-hidden {
 /* HABILIDADES */
 #habilidades {
   background: var(--black);
-  padding: 6rem 4rem;  /* antes 10rem 4rem */
+  padding: 6rem 4rem;
   position: relative;
   overflow: hidden;
 }
@@ -631,10 +628,10 @@ nav.nav-hidden {
 .skill-tag i { font-size: 0.8rem; color: var(--lilac); }
 .skill-tag:hover { border-color: var(--lilac); color: var(--lilac); }
 
-/* PORTFÓLIO — 4 cards pequenos em fileira */
+/* PORTFÓLIO */
 #portfolio {
   background: var(--black);
-  padding: 6rem 4rem 6rem;  /* antes 10rem 4rem 6rem */
+  padding: 6rem 4rem 6rem;
 }
 
 .portfolio-cards {
@@ -700,14 +697,14 @@ nav.nav-hidden {
 }
 
 .pcard-title {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: .95rem;
   font-weight: 700;
   color: var(--white);
   line-height: 1.2;
 }
 
-/* GALERIAS INLINE — abertas e orgânicas */
+/* GALERIAS INLINE */
 .galeria-section {
   background: #080808;
   padding: 5rem 4rem 8rem;
@@ -753,9 +750,9 @@ nav.nav-hidden {
 }
 
 .galeria-titulo {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1.1;
 }
@@ -781,7 +778,7 @@ nav.nav-hidden {
   transform: scale(1.015);
 }
 
-/* Grid para Revista — 2 colunas (sem capa em destaque) */
+/* Grid para Revista */
 .revista-paginas {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -813,7 +810,7 @@ nav.nav-hidden {
   background: white;
 }
 
-/* Kimbre steps (inline) */
+/* Kimbre steps */
 .kimbre-steps {
   display: flex;
   flex-direction: column;
@@ -852,7 +849,7 @@ nav.nav-hidden {
 }
 
 .kimbre-step-num {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: 4rem;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.06);
@@ -869,7 +866,7 @@ nav.nav-hidden {
 }
 
 .kimbre-step-title {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -964,9 +961,9 @@ nav.nav-hidden {
 }
 
 .contact-heading {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -.03em;
   margin-bottom: 2rem;
@@ -1054,7 +1051,7 @@ footer {
 }
 
 .footer-name {
-  font-family: var(--serif);
+  font-family: var(--cormorant);
   font-size: 1rem;
   letter-spacing: .05em;
 }
@@ -1094,6 +1091,7 @@ footer {
   transition: background .3s, border-color .3s;
   will-change: transform;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: none;
 }
 
 .available-badge:hover {
@@ -1159,9 +1157,4 @@ footer {
 @media (max-width: 480px) {
   .portfolio-cards { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .galeria-organica { columns: 1; }
-}
-
-/* Ocultar badge temporariamente */
-.available-badge {
-  display: none;
 }
