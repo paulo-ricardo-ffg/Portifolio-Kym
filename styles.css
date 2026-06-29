@@ -241,7 +241,7 @@ nav.nav-hidden {
   max-width: 500px;
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, .55);
+  color: rgb(255, 255, 255);
   font-weight: 300;
   margin-bottom: 2rem;
   opacity: 0;
@@ -336,20 +336,6 @@ nav.nav-hidden {
   gap: .5rem;
   opacity: 0;
   z-index: 2;
-}
-
-.scroll-indicator span {
-  font-size: .65rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .3);
-}
-
-.scroll-line {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(to bottom, rgba(200, 162, 255, .8), transparent);
-  animation: scrollPulse 2s infinite;
 }
 
 /* MARQUEE */
