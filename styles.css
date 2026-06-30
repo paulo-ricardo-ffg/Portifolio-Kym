@@ -1137,6 +1137,8 @@ footer {
   footer { flex-direction: column; text-align: center; }
   .portfolio-cards { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
   .kimbre-step { grid-template-columns: 1fr; direction: ltr !important; }
+  .kimbre-step-text { order: 1; }
+  .kimbre-step-img { order: 2; }
   .sobre-left { order: 2; }
   .sobre-image-wrap { order: 1; }
   .hero-marquee { display: none; }
